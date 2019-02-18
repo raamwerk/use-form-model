@@ -15,6 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "react": "^16.8.2",
+    "react-dom": "^16.8.2",
     "set-prop-types": "0.0.1"
   },
   "repository": {

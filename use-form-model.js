@@ -5,11 +5,9 @@ const ModelContext = createContext()
 class FormModel { }
 
 function Form ({model, ...props}) {
-  return (
-    <ModelContext.Provider value={model}>
-      <form {...props} />
-    </ModelContext.Provider>
-  )
+  return React.createElement(ModelContext.Provider, {
+    value: model
+  }, React.createElement("form", props));
 }
 setPropTypes(Form, T => ({
   model: T.instanceOf(FormModel).isRequired
