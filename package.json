@@ -1,6 +1,6 @@
 {
   "name": "use-form-model",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "React hook that provides 2-way data binding",
   "main": "use-form-model.js",
   "keywords": [
