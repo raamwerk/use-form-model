@@ -5,9 +5,11 @@ const ModelContext = createContext()
 class FormModel { }
 
 function Form ({model, ...props}) {
-  return React.createElement(ModelContext.Provider, {
-    value: model
-  }, React.createElement("form", props));
+  return (
+    <ModelContext.Provider value={model}>
+      <form {...props} />
+    </ModelContext.Provider>
+  )
 }
 setPropTypes(Form, T => ({
   model: T.instanceOf(FormModel).isRequired
@@ -47,9 +49,9 @@ setPropTypes(Control, T => ({
   name: T.string.isRequired
 }))
 
-const Input = props => React.createElement(Control, _extends({as: "input"}, props))
-const TextArea = props => React.createElement(Control, _extends({as: "textarea"}, props))
-const Select = props => React.createElement(Control, _extends({as: "select"}, props))
+const Input = props => <Control as="input" {...props} />
+const TextArea = props => <Control as="textarea" {...props} />
+const Select = props => <Control as="select" {...props} />
 
 function useFormModel (obj) {
   const model = new FormModel()
@@ -68,8 +70,6 @@ Form.Control = Control
 Form.Input = Input
 Form.TextArea = TextArea
 Form.Select = Select
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 export default useFormModel
 export {Form, Control, Input, TextArea, Select, useFormModel}
